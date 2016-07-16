@@ -7,7 +7,7 @@ var PORT = 3001;
 
 // target site
 var T_HOST = 'www.ineva.cn';
-var T_PORT = 22;
+var T_PORT = 80;
 
 var client = new net.Socket();
 var target = []; // target socket
