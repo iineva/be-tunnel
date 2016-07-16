@@ -1,0 +1,22 @@
+{
+  "name": "be-tunnel",
+  "version": "0.0.1",
+  "description": "public localhost",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "random-string": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tunnel"
+  ],
+  "bin": {
+    "be-server": "bin/be-server",
+    "be-client": "bin/be-client"
+  },
+  "author": "Steven",
+  "license": "ISC"
+}

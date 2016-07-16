@@ -21,3 +21,4 @@ user --> be-tunnel server              target service
 # TODO
 
 * 通道之间的数据使用加密算法加密
+* BUG : 数据包比较大时，连接会断开
