@@ -4,6 +4,7 @@
 
 var net = require('net');
 var randomstring = require('random-string');
+var parseData = require('./lib/parse-data');
 
 var HOST = '127.0.0.1';
 var PORT = 3001; // be-tunnel使用的端口
@@ -37,18 +38,18 @@ net.createServer(function(sock) {
         connects[id] = s;
 
         // 发送open通知
-        sock && sock.writable && sock.write(JSON.stringify({ 'id': id, 'action': 'open' }));
+        sock && sock.writable && sock.write(parseData.createBuffer(id, parseData.type.open));
 
         // 关闭时清除链接
         s.on('close', function() {
             console.log('客户端断开链接!');
-            sock && sock.writable && sock.write(JSON.stringify({ 'id': id, 'action': 'close' }));
+            sock && sock.writable && sock.write(parseData.createBuffer(id, parseData.type.close));
         });
         // 收到数据时转发
         s.on('data', function(d) {
             // console.log('从客户端接受到数据');
             process.stdout.write('.');
-            sock && sock.writable && sock.write(JSON.stringify({ 'id': id, 'action': 'data', 'data': d.toString("base64") }));
+            sock && sock.writable && sock.write(parseData.createBuffer(id, parseData.type.data, d));
         });
 
     }).listen(P, HOST);
@@ -57,17 +58,20 @@ net.createServer(function(sock) {
     ///////////////////////////////////////////////////
     console.log('CLIENT CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
     // 为这个socket实例添加一个"data"事件处理函数
-    sock.on('data', function(data) {
+    sock.on('data', function(buffer) {
         // console.log('从be-tunnel收到数据: ' + data.length + ' byte');
         // 收到be-tunnel客户端数据，回转给客户端
-        var data = JSON.parse(data);
-        var d = new Buffer(data.data, 'base64');
-        var s = connects[data.id];
-        s.write(d);
+        var objectArray = parseData.parseBuffer(buffer);
+        for (var i = 0; i < objectArray.length; i++) {
+            // 遍历处理所有数据包
+            var object = objectArray[i];
+            var s = connects[object.id];
+            s.write(object.data);
+        }
     });
 
     // 为这个socket实例添加一个"close"事件处理函数
-    sock.on('close', function(data) {
+    sock.on('close', function() {
         console.log('be-tunnel客户端断开');
 
         // 销毁客户端服务器
