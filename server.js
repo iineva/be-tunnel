@@ -47,7 +47,7 @@ net.createServer(function(sock) {
         // 收到数据时转发
         s.on('data', function(d) {
             // console.log('从客户端接受到数据');
-            console.log('.');
+            process.stdout.write('.');
             sock && sock.writable && sock.write(JSON.stringify({ 'id': id, 'action': 'data', 'data': d.toString("base64") }));
         });
 

@@ -42,7 +42,7 @@ client.connect(PORT, HOST, function() {
                     s.on('data', function(d) {
                         // 收到目标服务反回的数据
                         // console.log('收到目标服务反回的数据');
-                        console.log('.');
+                        process.stdout.write('.');
                         client.write(JSON.stringify({
                             'id': id,
                             'action': 'data',
