@@ -2,6 +2,29 @@
 
 Public your localhost service. A TCP tunnel.
 
+# Usage
+
+* server site
+
+```
+node server-site.js
+```
+
+* client site
+
+```
+node client-site.js \
+--tunnel-host ineva.cn \
+--backend-host localhost \
+--backend-port 80 \
+--public-port 3000
+```
+
+* other net work
+
+```
+curl http://<server-name>:3000
+```
 
 # 基本原理
 
