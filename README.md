@@ -1,5 +1,8 @@
 # be-tunnel
 
+Public your localhost service. A TCP tunnel.
+
+
 # 基本原理
 
 user <------> be-tunnel server <-------> be-tunnel client <---------> target server
@@ -18,7 +21,9 @@ user --> be-tunnel server              target service
          client id -----------------> be-thunnel client
 ```
 
+
 # TODO
 
 * 通道之间的数据使用加密算法加密
 * BUG : 数据包比较大时，连接会断开
+* UDP tunnel支持
