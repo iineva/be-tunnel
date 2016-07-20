@@ -14,16 +14,16 @@ node server-site.js
 
 ```
 node client-site.js \
---tunnel-host ineva.cn \
+--tunnel-host <YOUR_SERVER_NAME> \
 --backend-host localhost \
 --backend-port 80 \
---public-port 3000
+--service-port 3000
 ```
 
 * other net work
 
 ```
-curl http://<server-name>:3000
+curl http://<YOUR_SERVER_NAME>:3000
 ```
 
 # 基本原理
@@ -48,5 +48,4 @@ user --> be-tunnel server              target service
 # TODO
 
 * 通道之间的数据使用加密算法加密
-* BUG : 数据包比较大时，连接会断开
-* UDP tunnel支持
+* UDP 协议支持
