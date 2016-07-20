@@ -1,5 +1,6 @@
-var program = require('commander');
-var server = require('./lib/server');
+const program = require('commander');
+const BeTunnelServer = require('./lib/BeTunnelServer');
+// var server = require('./lib/server');
 
 program
   .version('0.0.1')
@@ -9,4 +10,8 @@ program
 
 
 // 启动服务
-server(program.tunnelHost, program.tunnelPort);
+let server = new BeTunnelServer({
+  tunnel_host: program.tunnelHost,
+  tunnel_port: program.tunnelPort
+});
+server.start();

@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "public localhost",
   "dependencies": {
-    "commander": "^2.9.0",
-    "random-string": "^0.1.2"
+    "commander": "^2.9.0"
   },
   "devDependencies": {},
   "scripts": {
