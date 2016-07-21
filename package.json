@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "public localhost",
   "dependencies": {
+    "async": "^2.0.0",
     "commander": "^2.9.0"
   },
   "devDependencies": {},
