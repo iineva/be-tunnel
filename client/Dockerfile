@@ -6,4 +6,4 @@ ENV NODE_ENV=production
 
 ADD . /app
 
-CMD [ "npm run start" ]
+CMD [ "node", "index.js" ]
