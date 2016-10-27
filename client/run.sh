@@ -2,10 +2,11 @@
 #
 
 docker run -d \
---restart-always \
---net=host \
+--restart=always \
 --name=betunnel-client \
 -e SERVER='wss://ubuntu-workspace-iineva.c9users.io' \
 -e LISTEN=8388 \
 -e FORWARD=8388 \
-betunnel-client
+-p 8389:8388 \
+ineva/be-tunnel-client
+
