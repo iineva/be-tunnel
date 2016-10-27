@@ -1,0 +1,15 @@
+{
+  "name": "betunnel-server",
+  "version": "1.0.0",
+  "description": "betunnel-server",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install",
+    "start": "node index.js"
+  },
+  "author": "Steven",
+  "license": "ISC",
+  "dependencies": {
+    "websocket": "^1.0.23"
+  }
+}
