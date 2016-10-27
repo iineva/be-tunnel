@@ -4,7 +4,6 @@
   "description": "betunnel-server",
   "main": "index.js",
   "scripts": {
-    "build": "echo build",
     "start": "node index.js"
   },
   "author": "Steven",
